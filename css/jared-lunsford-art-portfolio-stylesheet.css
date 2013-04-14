@@ -2,6 +2,16 @@ html,
 body{
 	height:100%;
 	background:#b3b3b3;
+	color:white;
+	font-family:Arial;
+}
+body{
+	margin:0;
+}
+ul{
+	margin:0;
+	padding:0;
+	list-style:none;
 }
 #root-container{
 	width:980px;
@@ -22,8 +32,10 @@ body{
 	float:right;
 }
 #text-area{
-	color:white;
 	text-align:right;
-	margin-right:1em;
-	font-size:1.2em;
+	margin-right:2em;
 }
+.social-links li,
+.social-links a{display:inline-block;}
+.artwork {font-size:0;}
+.artwork li{margin:0;padding:0}

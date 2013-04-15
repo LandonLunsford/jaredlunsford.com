@@ -1,9 +1,66 @@
+@media only screen and (min-width: 320px) {
+
+  /* Small screen, non-retina */
+
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (                min-resolution: 192dpi) and (min-width: 320px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 320px) { 
+
+  /* Small screen, retina, stuff to override above media query */
+
+}
+
+@media only screen and (min-width: 700px) {
+
+  /* Medium screen, non-retina */
+
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 700px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 700px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 700px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 700px),
+only screen and (                min-resolution: 192dpi) and (min-width: 700px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 700px) { 
+
+  /* Medium screen, retina, stuff to override above media query */
+
+}
+
+@media only screen and (min-width: 1300px) {
+
+  /* Large screen, non-retina */
+
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
+
+  /* Large screen, retina, stuff to override above media query */
+
+}
+
 html,
 body{
 	height:100%;
 	background:#b3b3b3;
 	color:white;
 	font-family:Arial;
+	font-size:14px;
+	font-smooth: never;
+	-webkit-font-smoothing : none;
 }
 body{
 	margin:0;
@@ -13,6 +70,11 @@ ul{
 	padding:0;
 	list-style:none;
 }
+a,
+a:link,
+a:visited{color:white}
+a:hover{color:#333}
+
 #root-container{
 	width:980px;
 	margin:0 auto;
@@ -21,10 +83,8 @@ ul{
 #left-side{
 	display:inline-block;
 	position:fixed;
-	top:64px;
 	width:320px;
 	float:left;
-	text-align:right;
 	padding-right:32px;
 }
 #right-side{
@@ -32,10 +92,37 @@ ul{
 	float:right;
 }
 #text-area{
-	text-align:right;
-	margin-right:2em;
+	padding:0 16px 0 32px;
 }
+
+/* social links */
 .social-links li,
-.social-links a{display:inline-block;}
-.artwork {font-size:0;}
-.artwork li{margin:0;padding:0}
+.social-link{display:inline-block;position:relative}
+.social-link:hover{top:-6px}
+.social-link:active{top:0}
+.social-link-icon{width:72px;height:72px}
+.social-link-icon.blogspot{background:url(images/jared-lunsford-art-portfolio-social-link-icon-blogspot.png)}
+.social-link-icon.blogspot:active{background:url(images/jared-lunsford-art-portfolio-social-link-icon-blogspot-black.png)}
+.social-link-icon.linkedin{background:url(images/jared-lunsford-art-portfolio-social-link-icon-linkedin.png)}
+.social-link-icon.linkedin:active{background:url(images/jared-lunsford-art-portfolio-social-link-icon-linkedin-black.png)}
+.social-link-icon.soundcloud{background:url(images/jared-lunsford-art-portfolio-social-link-icon-soundcloud.png)}
+.social-link-icon.soundcloud:active{background:url(images/jared-lunsford-art-portfolio-social-link-icon-soundcloud-black.png)}
+
+.images {font-size:0;}
+.images li{margin:0;padding:0}
+.image{width:640px}
+/*
+
+.image.0{background:url(images/jared-lunsford-art-portfolio-rat-trap.png)}
+.image.1{background:url(images/jared-lunsford-art-portfolio-rat-trapb.png)}
+.image.2{background:url(images/jared-lunsford-art-portfolio-80s-time-machine.png)}
+.image.3{background:url(images/jared-lunsford-art-portfolio-ali-baba-story.png)}
+.image.4{background:url(images/jared-lunsford-art-portfolio-heart-shaped.png)}
+.image.5{background:url(images/jared-lunsford-art-portfolio-sleepy.png)}
+.image.6{background:url(images/jared-lunsford-art-portfolio-plum-leap.png)}
+.image.7{background:url(images/jared-lunsford-art-portfolio-zombie-plum.png)}
+.image.8{background:url(images/jared-lunsford-art-portfolio-frank.png)}
+.image.9{background:url(images/jared-lunsford-art-portfolio-adrians-story.png)}
+.image.10{background:url(images/jared-lunsford-art-portfolio-turn-around.png)}
+.image.11{background:url(images/jared-lunsford-art-portfolio-silly-red.png)}
+*/

@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>os skeleton</title>
+		
+		<style>
+			html{
+				height:100%;
+			}
+			
+			body{
+				background:#f3f4f5;
+				
+				margin:0;
+				height:100%
+
+			}
+			h2{
+				font-size:16px;
+			}
+			.content{
+				
+			}
+			.page-list{
+				padding:0;
+				margin:0;
+				list-style:none;
+				width:4000px;
+				
+				display:block;
+				position:absolute;
+				top:50%;
+				left:50%;
+				margin-top:-384px;
+				margin-left:-256px;
+				
+			}
+			.page{
+				background:#fff;
+				box-shadow:0 0 16px #bbb;
+				height:640px;
+				width:512px;
+				
+				
+				float:left;
+				opacity:0.5;
+				display:inline-block;
+				
+				margin-right:80px;
+			}
+			.page.active{
+				opacity:1;
+			}
+			.page.first{
+				
+			}
+			.logo{
+				text-align:center;
+				position:relative;
+				top:160px;
+			}
+			.navigation{
+				text-align:center;
+				position:relative;
+				top:280px;
+			}
+			.navigation .link{
+				text-decoration:none;
+			}
+			.navigation .link-divider{
+				margin:0 16px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="content">
+			<ul class="page-list">
+				<li id="page-01" class="page active first">
+					<a name="page-01"> </a>
+					<!--
+						use rule of 3rds 
+						center align logo at 640 / 3
+						center align links at 640 / 3 * 2
+					-->
+					<div class="logo">
+						<h1>ORICHALCUM</h1>
+						<h2>STUDIOS</h2>
+					</div>
+					<div class="navigation">
+						<a class="link" href="#games">Games</a><span class="link-divider">|</span><a class="link" href="#about">About</a>
+					</div>
+				</li>
+				<li id="page-02" class="page" style="width:640px">
+					<a name="games"> </a>
+				</li>
+				<li id="page-03" class="page" style="width:400px">
+					<a name="about"> </a>
+				</li>
+				<li id="page-04" class="page" style="width:400px">
+					<a name="4"> </a>
+				</li>
+				<li id="page-05" class="page">
+					<a name="5"> </a>
+				</li>
+			</ul>
+			
+		<div>
+		
+		<script src="jquery.min.js"></script>
+		<script>
+			(function($){
+				$(function(){
+					var $pages = $('.page')
+						,$toScroll = $('html,body')
+						,pageActiveClass = 'active'
+						,pageScrollSpeed = 800;
+					
+					$pages.click(function(event){
+						$pages.removeClass(pageActiveClass);
+						$(this).addClass(pageActiveClass);
+						$toScroll.animate({scrollLeft:$(this).position().left}, pageScrollSpeed);
+						return false;
+					});
+					
+					//$(.link[href="#games"
+				});
+			})(jQuery.noConflict(true));
+		</script>
+	</body>
+</html>

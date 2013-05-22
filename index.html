@@ -1,0 +1,116 @@
+<!doctype html>
+<!--
+Instructions
+
+icon graphic: 	64x64
+icon border: 	80x80
+icon touch size:80x80 OR entire block if it feels right
+small tiles:	272x272
+large tile:	variable to how the tiles are organized. this is the one the small tiles are inside
+		you can add a shadow to this if you want. keep it light and very subtle. white color
+bg:		a grey color for now
+text box:	160x240	these are text boxes placed 32pixels from the top and bottom inside the small tiles
+font:		verdant, 24pt, 18pt, ability to BOLD
+margins:	32px this is the spacing between the tiles and the edge of a large white square that the tiles will sit on
+
+-->
+<html>
+	<head>
+		<title>JL Skeleton</title>
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+		<style>
+			/* base */
+			body,p,h1,h2,h3,h4,h5,h6{margin:0}
+			body{font-family:verdant,sans-serif,arial;font-size:18px}
+			strong{font-size:24px}
+			img{border:0}
+			a{text-decoration:none}
+		
+			/* skeleton */
+			.grid{margin:0 auto;min-width:272px;max-width:972px}
+			.node{margin:32px 16px 0 16px;width:272px;height:272px;float:left;position:relative;display:block}
+			.node .node-icon{border-radius:32px}
+			.node .text-area{color:#fff;position:absolute;top:0;left:0;padding:32px;width:160px;height:240px}
+			.node .link,
+			.node .link-border{position:absolute;bottom:0;right:0}
+			.node .link,
+			.node .link-icon{width:64px;height:64px}
+			
+			/* optional */
+			.node:hover{margin-top:26px;margin-bottom:6px}
+			
+		</style>
+	</head>
+	<body>
+		<div class="grid">
+			<div class="node">
+				<img class="node-icon" src="images/jared-lunsford-logo.png" alt="jared lunsford website logo"/>
+			</div>
+			<div class="node">
+				<img class="node-icon" src="images/jared-lunsford-linkedin.png" alt="jared lunsford linkedin">
+				<div class="text-area">
+					<p><strong>Connect</strong> with me on Linkedin!</p>
+				</div>
+				<a class="link" href="#">
+					<img class="link-icon" src="images/jared-lunsford-linkedin-icon.png" alt="jared lunsford linkedin link">
+				</a>
+			</div>
+			<div class="node">
+				<img class="node-icon" src="images/jared-lunsford-soundcloud.png">
+				<div class="text-area">
+					<p><strong>Listen to my music</strong> on Soundcloud!</p>
+				</div>
+				<a class="link" href="#">
+					<img class="link-icon" src="images/jared-lunsford-soundcloud-icon.png">
+				</a>
+			</div>
+			<div class="node">
+				<img class="node-icon" src="images/jared-lunsford-blogger.png">
+				<div class="text-area">
+					<p>You can see some of my schoolwork here.</p>
+				</div>
+				<a class="link" href="#">
+					<img class="link-icon" src="images/jared-lunsford-blogger-icon.png">
+				</a>
+			</div>
+			<div class="node">
+				<img class="node-icon" src="images/jared-lunsford-portfolio.png">
+				<div class="text-area">
+					<p><strong>Check out my Art!</strong> This is a little portfolio page showcasing some of my artwork.</p>
+				</div>
+				<a class="link" href="#">
+					<img class="link-icon" src="images/jared-lunsford-portfolio-icon.png">
+				</a>
+			</div>
+			<div class="node">
+				<img class="node-icon" src="images/jared-lunsford-github.png">
+				<div class="text-area">
+					<p>Here is my awesome brother's Github page!</p>
+				</div>
+				<a class="link" href="https://github.com/LandonLunsford">
+					<img class="link-icon" src="images/jared-lunsford-github-icon.png">
+				</a>
+			</div>
+			<div class="node">
+				<img class="node-icon" src="images/jared-lunsford-roly-poly-puzzle-facebook.png">
+				<div class="text-area">
+					<p><strong>Roly Poly Puzzle Facebook</strong> page is now up! Like it and share with friends!</p>
+				</div>
+				<a class="link" href="#">
+					<img class="link-icon" src="images/jared-lunsford-roly-poly-puzzle-facebook-icon.png">
+				</a>
+			</div>
+			<div class="node">
+				<img class="node-icon" src="images/jared-lunsford-roly-poly-puzzle-appstore.png">
+				<div class="text-area">
+					<p><strong>Roly Poly Puzzle</strong> will be available soon on the appstore!</p>
+				</div>
+				<a class="link" href="#">
+					<img class="link-icon" src="images/jared-lunsford-roly-poly-puzzle-appstore-icon.png">
+				</a>
+			</div>
+			
+		</div>
+		<script src="http://code.jquery.com/jquery.js"></script>
+	</body>
+</html>

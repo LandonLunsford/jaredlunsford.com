@@ -137,19 +137,23 @@ margins:	32px this is the spacing between the tiles and the edge of a large whit
 		</div>
 		
 		<noscript><style>.node-content{display:block}</style></noscript>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 		<script>
 			(function($, window, jl){
 				var transitionA = {
 					duration: 800
 					,delay: 200
+					,shuffle: true
 					,start: {opacity:'0',bottom:'-48px',position:'relative',display:'block'}
 					,end: {opacity:'1',bottom:'0'}
 					,easing: 'swing'
+					
 				};
 				var transitionB = {
-					duration: 800
-					,delay: 400
+					duration: 1600
+					,delay: 200
+					,shuffle: true
 					,start: {width:'0', height:'0', left:'136px', top:'272px', position:'absolute', display:'block'}
 					,end: {width:'272px', height:'272px', left:'0px', top:'0'}
 					,easing: 'easeOutElastic'
@@ -157,19 +161,26 @@ margins:	32px this is the spacing between the tiles and the edge of a large whit
 					,onEnd: function(){ $('body').css('overflow','auto'); }
 				};
 				($('.node-content').show())
+				$('.node-content a').css({opacity:'0'});
 				
-				
-				var transition = function($targets, transition){
+				var toAll = function($targets, transition){
 					
 					transition.onStart && transition.onStart();
+					transition.shuffle && ($targets = $targets.sort(function() { return 0.5 - Math.random() }));
+					
 					$targets.each(function(index, element){
+					
+						var delay = index * transition.delay;
 						$(this).css(transition.start)
-							.delay(index * transition.delay)
+							.delay(delay)
 							.animate(transition.end, {
 								duration: transition.duration
 								,easing: transition.easing
 								,complete: index < $targets.length - 1 ? $.noop : (transition.onEnd || $.noop)
-							});
+							})
+							.siblings('a')
+							.delay(delay + transition.duration)
+							.animate({opacity:'1'}, {duration:transition.duration * 0.5});
 					});
 					
 					

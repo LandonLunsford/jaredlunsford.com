@@ -142,8 +142,8 @@ margins:	32px this is the spacing between the tiles and the edge of a large whit
 		<script>
 			(function($, window, jl){
 				var transitionA = {
-					duration: 800
-					,delay: 200
+					duration: 400
+					,delay: 100
 					,shuffle: true
 					,start: {opacity:'0',bottom:'-48px',position:'relative',display:'block'}
 					,end: {opacity:'1',bottom:'0'}
@@ -151,12 +151,12 @@ margins:	32px this is the spacing between the tiles and the edge of a large whit
 					
 				};
 				var transitionB = {
-					duration: 1600
-					,delay: 200
+					duration: 600
+					,delay: 100
 					,shuffle: true
 					,start: {width:'0', height:'0', left:'136px', top:'272px', position:'absolute', display:'block'}
 					,end: {width:'272px', height:'272px', left:'0px', top:'0'}
-					,easing: 'easeOutElastic'
+					,easing: 'easeInQuad'
 					,onStart: function(){ $('body').css('overflow','hidden'); }
 					,onEnd: function(){ $('body').css('overflow','auto'); }
 				};
@@ -185,7 +185,7 @@ margins:	32px this is the spacing between the tiles and the edge of a large whit
 					
 					
 				//}($('.node') , transitionA);
-				}($('.node-content > img'), transitionB);
+				}($('.node-content > img'), transitionB);//
 				
 			})(jQuery, window, window.jl = window.jl || {});
 		</script>

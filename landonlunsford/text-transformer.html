@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Text Transformer</title>
+		<style>
+			html,body{height:100%}
+			ul{list-style:none;margin:0;padding:0}
+			.page{width:1024px;height:1024px;margin:32px auto}
+			.input,.output{width:30%;height:75%}
+			.transforms{display:inline-block;vertical-align:top}
+			/* .transform-button{width:8%;height:75%;vertical-align:top} */
+			
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<h1>Text Transformer</h1>
+			<textarea class="input" autofocus wrap="soft"></textarea>
+			<textarea class="output" readonly onclick="this.select()"></textarea>
+			<ul class="transforms">
+				<li>
+					<input type="checkbox" id="reverse"/>
+					<label for="reverse">reverse</label>
+				</li>
+				<li>
+					<input type="checkbox" id="randomize-center"/>
+					<label for="randomize-center">randomize center</label>
+				</li>
+			</ul>
+		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			(function($, window, orichalcum){
+				
+				orichalcum.transform = orichalcum.transform || {};
+				orichalcum.transform.text = orichalcum.transform.text || {};
+				
+				orichalcum.transform.text.ReverseTextTransform = function(options){
+					var settings = $.extend({}, {}, options || {});
+
+					this.transform = function(word){
+						return word.split('').reverse().join('');
+					};
+				};
+				
+				orichalcum.transform.text.RandomizeWordCenterTransform = function(options){
+					var settings = $.extend({}, {
+						randomizationMethod: function(){ return 0.5 - Math.random(); }
+					}, options || {});
+					
+					var transformWordCenter = function(wordCenter){
+						var orignalWordCenter = wordCenter, i = 0;
+						do {
+							wordCenter = wordCenter.split('').sort(settings.randomizationMethod).join('');
+						} while (wordCenter == orignalWordCenter && i++ < 100);
+						return wordCenter;
+					};
+					
+					this.transform = function(word){
+						if (word == null) return '';
+						if (word.length < 4) return word;
+						if (word.length == 4) return word.charAt(0) + word.charAt(2) + word.charAt(1) + word.charAt(3);
+						return word.charAt(0)
+							+ transformWordCenter(word.substring(1, word.length - 1))
+							+ word.charAt(word.length - 1);
+					};
+				};
+				
+				orichalcum.transform.text.TextTransformer = function(options){
+					var $this = $.extend(this,{
+						transforms: []
+					}, options || {});
+					
+					$this.applyTransforms = function(word){
+						if (/\w+/.test(word)){
+							for (var i = 0; i < $this.transforms.length; i++){
+								word = $this.transforms[i].transform(word);
+							}
+						}
+						return word;
+					};
+					
+					$this.setTransforms = function(transforms){
+						$this.transforms = transforms;
+					};
+					
+					$this.transform = function(text){
+						if (text == null) return '';
+						return text.match(/\w+|\W+/g)
+							.map(this.applyTransforms)
+							.join('');
+					};
+					
+					return $this;
+				};
+				
+			})(jQuery, window, window.orichalcum = window.orichalcum || {});
+		
+			
+			(function($, window, orichalcum){
+				
+				var $transforms = $('.transforms input[type=checkbox]')
+					,$input = $('.input')
+					,$output = $('.output')
+					,textTransformer = new orichalcum.transform.text.TextTransformer()
+					,checkboxToTransformMap = {
+						'reverse': new orichalcum.transform.text.ReverseTextTransform()
+						,'randomize-center': new orichalcum.transform.text.RandomizeWordCenterTransform({
+							randomizationMethod: function(){ return 0.5 - Math.random(); }
+						})
+					},
+					applyTransforms = function(){
+						var transforms = [];
+						$transforms.each(function(index, transformCheckbox){
+							if ($(transformCheckbox).is(':checked')){
+								transforms.push(checkboxToTransformMap[$(transformCheckbox).attr('id')]);
+							}
+						});
+						textTransformer.setTransforms(transforms);
+						$output.val(textTransformer.transform($input.val()));
+					};
+					
+				
+				
+				$transforms.change(function(event){
+					applyTransforms();
+				});
+				
+				$('.input').val("Can you read this text even though it has been transformed?");
+				
+			})(jQuery, window, window.orichalcum = window.orichalcum || {});
+			
+			
+		</script>
+	</body>
+</html>

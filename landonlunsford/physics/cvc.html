@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Circle Vs Circle</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="1000" height="1000">
+		<script src="jquery.min.js"></script>
+		<script src="cvc.js"></script>
+		<script>
+			function createRandomCircle(){
+				var r = canvas.width*0.025 - canvas.width*0.02*Math.random();
+				var a = Math.sqrt(Math.PI * r * r);
+				var s = 4;
+				return new os.geometry.Circle({
+					x:canvas.width*Math.random()
+					,y:canvas.height *Math.random()
+					,radius:r
+					,angle:2*Math.PI*Math.random()
+					,mass:1
+					,friction:1
+					,elasticity:1
+					,linearVelocityX:s*(0.5-Math.random())
+					,linearVelocityY:s*(0.5-Math.random())
+					,angularVelocity:s*(0.5-Math.random())*0.01
+					,linearDamping:.999
+					,angularDamping:.999
+				});
+			};
+			
+			var canvas = document.getElementById('canvas');
+			var timestep = 1/24;
+			var simulatables = [];
+			for (var i = 0; i < 50; i++){
+				simulatables.push(createRandomCircle());
+			}
+			var simulator = new os.physics.Simulator(simulatables, timestep, canvas);
+			simulator.run();
+			
+			$(document).click(function(event){
+				var s = simulatables[0];
+				var dx = event.pageX - s.x;
+				var dy = event.pageY - s.y;
+				var speed = Math.sqrt(dx * dx + dy * dy) / canvas.width * 0.01
+				s.linearVelocityX = dx * speed;
+				s.linearVelocityY = dy * speed;
+			});
+		</script>
+	</body>
+</html>
